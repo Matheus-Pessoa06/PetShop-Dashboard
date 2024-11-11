@@ -25,6 +25,10 @@ Class UserRepository{
         return $this->user->find($id);
     }
 
+    public function findByEmail($email){
+        return $this->user->where('email', $email)->first();
+    }
+
     public function updateUser($id, $data){
 
         $user = $this->user->findorfail($id);
