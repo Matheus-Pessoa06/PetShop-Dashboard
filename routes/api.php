@@ -17,4 +17,3 @@ Route::controller(LoginController::class)->group(function (){
     Route::post('/auth', 'login');
 });
 
-
