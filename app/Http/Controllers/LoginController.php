@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\LoginService;
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
@@ -16,12 +16,14 @@ class LoginController extends Controller
 
     public function login(LoginRequest $userRequest){
 
-        $token = $this->loginService->token($userRequest);
+        $credentials = $userRequest->only('email', 'password');
+        
+        $response = $this->loginService->authenticate($credentials);
 
-        if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if(isset($response['error'])) {
+            return response()->json(['error' => $response['error']], $response['status']);
         }
 
-        return response()->json(['status' => 'API is working']);
+        return response()->json(['token' => $response['token']], $response['status']);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 
@@ -14,20 +15,18 @@ Class LoginService{
         $this->userRepository = $user;
     }
 
-    public function token($credentials){
-
+    public function authenticate($credentials)
+    {
         $user = $this->userRepository->findByEmail($credentials);
 
-        if($user && hash::check($credentials['password'], $user->password)){
-            return [
-                'token' => $user->createToken('auth_token')->plainTextToken
-            ];
+        if (!Hash::check($credentials['password'], $user->password)) {
+            return ['error' => 'Invalid credentials', 'status' => 401];
         }
 
-        return ['erro' => 'Credenciais inválidas'];
-        
-    }
+        $token = JWTAuth::fromUser($user);
 
+        return ['token' => $token, 'status' => 200];
+    }
 
 }
 
