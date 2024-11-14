@@ -13,4 +13,8 @@ class Client extends Model
         'pets',
         'adress'
     ];
+
+    public function users(){
+        $this->belongsTo(User::class, 'client_id');
+    }
 }
