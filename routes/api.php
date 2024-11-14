@@ -6,21 +6,20 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
 
-Route::controller(UserController::class)->group(function (){
-    Route::post('/create/user', 'store');
+Route::middleware('jwt.auth')->controller(UserController::class)->group(function (){
     Route::get('/users', 'show');
-    Route::delete('/delete/{id}', 'destroy');
+    Route::post('/create/user', 'store');
     Route::put('/edit/{id}', 'edit');
+    Route::delete('/delete/{id}', 'destroy');
 });
-
 
 Route::controller(LoginController::class)->group(function (){
     Route::post('/auth', 'login');
 });
 
 Route::controller(ClientController::class)->group(function() {
-    Route::post('/create/client', 'store');
     Route::get('/clients', 'show');
-    Route::put('client/edit/{id}', 'edit');
     Route::get('/client/{id}', 'getClient');
+    Route::post('/create/client', 'store');
+    Route::put('client/edit/{id}', 'edit');
 });
