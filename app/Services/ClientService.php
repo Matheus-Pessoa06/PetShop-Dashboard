@@ -11,7 +11,7 @@ Class ClientService{
     public function __construct(ClientRepository $client){
         $this->clientRepository = $client;
     }
-    
+   
     public function createdUser($data){
         $this->clientRepository->create($data);
     }
