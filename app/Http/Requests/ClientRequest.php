@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ClientRequest extends FormRequest
 {
@@ -23,6 +25,18 @@ class ClientRequest extends FormRequest
         return [
             'name' => 'required',
             'phoneNumber' => 'required',
+            'adress.cep' => 'required|string|size:9', // Exemplo de CEP com formato "12345-678"
+            'adress.city' => 'required|string|max:255',
+            'adress.district' => 'required|string|max:255',
+            'adress.number' => 'required|integer',
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'Os dados fornecidos são inválidos.',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }
