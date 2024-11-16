@@ -10,6 +10,12 @@ class Adress extends Model
         'cep',
         'city',
         'district',
-        'number'
+        'number',
+        'client_id'
     ];
+
+
+    public function client(){
+        return $this->belongsTo(Client::class, 'client_id');
+    }
 }
