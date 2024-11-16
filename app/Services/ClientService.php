@@ -13,7 +13,13 @@ Class ClientService{
     }
    
     public function createdUser($data){
-        $this->clientRepository->create($data);
+        $data['user_id'] = auth()->id(); 
+            return $this->clientRepository->createClient([
+                'name' => $data['name'],
+                'phoneNumber'=> $data['phoneNumber'],
+                'photo' => $data['photo'] ?? null,
+                'user_id' => $data['user_id'] ?? auth()->id(), 
+            ]);
     }
 
     public function getAllClients(){

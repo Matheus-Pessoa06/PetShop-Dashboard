@@ -11,10 +11,11 @@ class Client extends Model
         'photo',
         'phoneNumber',
         'pets',
-        'adress'
+        'adress',
+        'user_id'
     ];
 
     public function users(){
-        $this->belongsTo(User::class, 'client_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
