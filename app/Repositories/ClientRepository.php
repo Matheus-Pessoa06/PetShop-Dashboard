@@ -19,7 +19,7 @@ Class ClientRepository{
     }
 
     public function showClients(){
-        return $this->clientModel->all();
+        return $this->clientModel->with('adress')->get();
     }
 
     public function updateClient($id, $data){

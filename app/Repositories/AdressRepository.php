@@ -16,6 +16,7 @@ Class AdressRepository{
     }
 
     public function createAdress($data){
+        
         return $this->adressModel->create([
             "cep" => $data['cep'],
             "city" => $data['city'],
