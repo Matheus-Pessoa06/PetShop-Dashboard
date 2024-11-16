@@ -17,7 +17,7 @@ Route::controller(LoginController::class)->group(function (){
     Route::post('/auth', 'login');
 });
 
-Route::controller(ClientController::class)->group(function() {
+Route::middleware('jwt.auth')->controller(ClientController::class)->group(function() {
     Route::get('/clients', 'show');
     Route::get('/client/{id}', 'getClient');
     Route::post('/create/client', 'store');

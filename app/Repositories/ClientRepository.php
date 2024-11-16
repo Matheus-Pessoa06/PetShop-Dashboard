@@ -13,8 +13,9 @@ Class ClientRepository{
         $this->clientModel = $client;
     }
 
-    public function create($data){
+    public function createClient($data){
         return $this->clientModel->create($data);
+   
     }
 
     public function showClients(){
