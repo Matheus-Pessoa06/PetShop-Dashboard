@@ -31,7 +31,7 @@ class ClientController extends Controller
         
         $client = $this->clientService->updateClient($request->id, $request->all());
 
-        return response()->json($client, 201);
+        return response()->json($client->load('adress'), 201);
 
     }
 
