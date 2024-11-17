@@ -57,8 +57,4 @@ Class ClientService{
     }
 }
 
-
-
-
-
 ?>
