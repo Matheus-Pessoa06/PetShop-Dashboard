@@ -29,7 +29,7 @@ class ClientController extends Controller
 
     public function edit(ClientRequest $request){
         
-        $client = $this->clientService->updateClient($request->id, $request->all());
+        $client = $this->clientService->updatedClient($request->id, $request->all());
 
         return response()->json($client->load('adress'), 201);
 
