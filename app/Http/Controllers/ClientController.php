@@ -28,6 +28,7 @@ class ClientController extends Controller
     }
 
     public function edit(ClientRequest $request){
+
         
         $client = $this->clientService->updatedClient($request->id, $request->all());
 

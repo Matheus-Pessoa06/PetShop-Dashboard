@@ -49,7 +49,9 @@ Class ClientService{
     }
 
     public function updatedClient($id, $data){
-        return $this->clientRepository->updateClient($id, $data);
+
+        $adress = $data['adress'];
+        return $this->clientRepository->updateClient($id, $data, $adress);
     }
 
     public function getOne($id){
