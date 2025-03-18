@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 class PetController extends Controller
 {
 
-    protected $pet;
+    protected $petService;
 
     public function __construct(PetService $pet){
-        $this->pet = $pet;
+        $this->petService = $pet;
     }
 
-    public function store(PetRequest $request)
+    public function store(Request $request){
+        
+        $pet = $this->petService->createdPet($request->all());
+
+        return response()->json($pet, 201);
+    }
 }
