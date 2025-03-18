@@ -17,14 +17,14 @@ class ClientController extends Controller
 
         $client = $this->clientService->createdUser($request->all());
 
-        return response()->json($client->load('adress'), 201);
+        return response()->json($client->load('adress', 'pet'), 201);
     }
 
     public function show(){
         
         $client = $this->clientService->getAllClients();
 
-        return response()->json($client);
+        return response()->json($client->load('pet'));
     }
 
     public function edit(ClientRequest $request){

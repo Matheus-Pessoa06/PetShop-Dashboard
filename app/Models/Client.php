@@ -23,4 +23,8 @@ class Client extends Model
     public function adress(){
         return $this->hasMany(Adress::class, 'client_id');
     }
+
+    public function pet(){
+        return $this->hasMany(Pet::class, 'client_id');
+    }
 }
