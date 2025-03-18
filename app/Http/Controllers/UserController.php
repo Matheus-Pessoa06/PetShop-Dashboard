@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\UserRepository;
 use App\Http\Requests\UserRequest;
-use App\Models\User;
 use App\Services\UserService;
 
 class UserController extends Controller
