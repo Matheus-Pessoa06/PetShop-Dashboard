@@ -5,20 +5,20 @@ use App\Models\ConsultAndService;
 
 
 
-Class ConsultAndServiceRepository{
+class ConsultandServicesRepository{
 
     protected $consultAndServiceModel;
 
     public function __construct(ConsultAndService $consultAndService){
-        $this->consultAndService = $consultAndServiceModel;
+        $this->consultAndServiceModel = $consultAndService;
     }
 
     public function create($data){
-        $this->consultAndService->create($data);
+        $this->consultAndServiceModel->create($data);
     }
 
     public function show(){
-        $this->consultAndService->getAll();
+        $this->consultAndServiceModel->getAll();
     }
 }
 

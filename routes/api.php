@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConsultAndServicesController;
+use App\Models\ConsultAndService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -21,4 +23,8 @@ Route::middleware('jwt.auth')->controller(ClientController::class)->group(functi
     Route::get('/client/{id}', 'getClient');
     Route::post('/create/client', 'store');
     Route::put('client/edit/{id}', 'edit');
+});
+
+Route::controller(ConsultAndServicesController::class)->group(function (){
+    Route::post('create/consultAndService', 'store' );
 });
