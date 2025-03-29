@@ -14,6 +14,10 @@ class ConsultAndServicesController extends Controller
     }
 
     public function store(Request $data){
-        $this->ConsultAndService->create($data);
+        
+        $consultAndService = $this->ConsultAndService->createConsult($data->all());
+
+        return response()->json($consultAndService, 201);
+
     }
 }

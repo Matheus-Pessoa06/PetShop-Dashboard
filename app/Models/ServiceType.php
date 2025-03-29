@@ -10,4 +10,9 @@ class ServiceType extends Model
         'typeservice',
         'name'
     ];
+
+
+    public function serviceType(){
+        return $this->belongsTo(ConsultAndService::class, 'serviceType_id');
+    }
 }
