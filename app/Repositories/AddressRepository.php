@@ -1,17 +1,17 @@
 <?php 
 
 namespace App\Repositories;
-use App\Models\Adress;
+use App\Models\Address;
 
 
 
-Class AdressRepository{
+Class AddressRepository{
 
 
     protected $adressModel;
 
 
-    public function __construct(Adress $adresses){
+    public function __construct(Address $adresses){
         $this->adressModel = $adresses;
     }
 

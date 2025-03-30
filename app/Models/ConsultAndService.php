@@ -13,12 +13,12 @@ class ConsultAndService extends Model
         'date',
         'description',
         'servicetype',
-        'pets',
+        'pet_id',
         'service_id'
     ];
 
     public function serviceType(){
-        return $this->hasMany(ServiceType::class, 'serviceType_id');
+        return $this->hasMany(ServiceType::class, 'service_id');
     }
 
     public function consultAndService(){

@@ -2,20 +2,20 @@
 
 namespace App\Services;
 use App\Repositories\ClientRepository;
-use App\Services\AdressService;
+use App\Services\AddressService;
 use App\Services\PetService;
 
 
 Class ClientService{
 
     protected $clientRepository;
-    protected $adressService;
+    protected $addressService;
     
     protected $petService;
 
-    public function __construct(ClientRepository $client, AdressService $adress, PetService $pet){
+    public function __construct(ClientRepository $client, AddressService $adress, PetService $pet){
         $this->clientRepository = $client;
-        $this->adressService = $adress;
+        $this->addressService = $adress;
         $this->petService = $pet;
     }
    
@@ -32,16 +32,16 @@ Class ClientService{
     
         $client = $this->clientRepository->createClient($clientData);
             
-        if(isset($data['adress'])){
+        if(isset($data['address'])){
             $adressData = [
-                'cep' => $data['adress']['cep'],
-                'city' => $data['adress']['city'],
-                'district' => $data['adress']['district'],
-                'number' => $data['adress']['number'],
+                'cep' => $data['address']['cep'],
+                'city' => $data['address']['city'],
+                'district' => $data['address']['district'],
+                'number' => $data['address']['number'],
                 'client_id' => $client->id
             ];
 
-            $this->adressService->createdAdress($adressData);
+            $this->addressService->createdAdress($adressData);
         }
 
         $petData = [

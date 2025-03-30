@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ServiceTypeService;
 use Illuminate\Http\Request;
 
-class ServiceType extends Controller
+class ServiceTypeController extends Controller
 {
     protected $serviceTypeService;
 
@@ -16,7 +16,7 @@ class ServiceType extends Controller
     public function store(Request $request){
         
         $service = $this->serviceTypeService->create($request->all());
-
+        dd($service);
         return response()->json($service, 201);
     }
 

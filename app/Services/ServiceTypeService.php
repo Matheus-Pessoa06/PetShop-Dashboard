@@ -14,14 +14,8 @@ class ServiceTypeService{
 
     public function create($data){
        
-        $serviceType = [
-            "typeservice" => $data['typeservice'],
-            "name" => $data['name']
-        ];
-
-        $this->serviceTypeRepository->createService($serviceType);
-
-        return $serviceType;
+       $this->serviceTypeRepository->createService($data);
+        
     }
 
     public function showAll(){

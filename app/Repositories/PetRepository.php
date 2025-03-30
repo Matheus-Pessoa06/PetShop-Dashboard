@@ -19,7 +19,6 @@ Class PetRepository{
             "name" => $data['name'],
             "photo" => $data['photo'],
             "description" => $data['description'],
-            //"servicestype" => $data['servicestype'],
             "client_id" => $data['client_id']
         ]);
     }

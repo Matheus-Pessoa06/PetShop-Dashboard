@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consults_and_services', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
-            $table->float('price');
-            $table->dateTime('date');
-            $table->string('description');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('consults_and_services')){
+            Schema::create('consults_and_services', function (Blueprint $table) {
+                $table->id();
+                $table->string('type');
+                $table->float('price');
+                $table->dateTime('date');
+                $table->string('description');
+                $table->foreignId('pet_id')->constrained('pets')->onDelete('cascade');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

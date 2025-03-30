@@ -17,7 +17,7 @@ class ConsultAndServicesController extends Controller
         
         $consultAndService = $this->ConsultAndService->createConsult($data->all());
 
-        return response()->json($consultAndService, 201);
+        return response()->json($consultAndService->load('serviceType'), 201);
 
     }
 }

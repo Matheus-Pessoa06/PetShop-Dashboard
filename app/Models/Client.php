@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\Adress;
+use App\Models\Address;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +21,7 @@ class Client extends Model
     }
 
     public function adress(){
-        return $this->hasMany(Adress::class, 'client_id');
+        return $this->hasMany(Address::class, 'client_id');
     }
 
     public function pet(){

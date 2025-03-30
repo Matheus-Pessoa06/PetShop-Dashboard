@@ -14,7 +14,10 @@ class ConsultandServicesRepository{
     }
 
     public function create($data){
-        $this->consultAndServiceModel->create($data);
+        
+        $consult = $this->consultAndServiceModel->create($data);
+
+        return $consult;
     }
 
     public function show(){

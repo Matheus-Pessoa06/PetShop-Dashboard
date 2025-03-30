@@ -14,7 +14,9 @@ class ServiceTypeRepository{
     }
 
     public function createService($data){
-        $this->serviceTypeModel->create($data);
+        $service = $this->serviceTypeModel->create($data);
+
+        return $service;
     }
 
     public function showService(){

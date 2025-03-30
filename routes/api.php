@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
-
-Route::middleware('jwt.auth')->controller(UserController::class)->group(function (){
+use App\Http\Controllers\ServiceTypeController;
+//middleware('jwt.auth')->
+Route::controller(UserController::class)->group(function (){
     Route::get('/users', 'show');
     Route::post('/create/user', 'store');
     Route::put('/edit/{id}', 'edit');
@@ -27,4 +28,10 @@ Route::middleware('jwt.auth')->controller(ClientController::class)->group(functi
 
 Route::controller(ConsultAndServicesController::class)->group(function (){
     Route::post('create/consultAndService', 'store' );
+});
+
+Route::controller(ServiceTypeController::class)->group(function(){
+    route::post('create/service', 'store');
+    route::get('getAllServices', 'show');
+    route::delete('delete/$id', 'destroy');
 });

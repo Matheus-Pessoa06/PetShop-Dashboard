@@ -2,15 +2,15 @@
 
 namespace App\Services;
 
-use App\Repositories\AdressRepository;
+use App\Repositories\AddressRepository;
 
 
 
-Class AdressService{
+Class AddressService{
 
     protected $adressRepository;
 
-    public function __construct(AdressRepository $adress){
+    public function __construct(AddressRepository $adress){
         $this->adressRepository = $adress;
     }
 
