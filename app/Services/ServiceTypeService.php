@@ -21,7 +21,17 @@ class ServiceTypeService{
 
         $this->serviceTypeRepository->createService($serviceType);
 
-        return response()->json($serviceType, 201);
+        return $serviceType;
+    }
+
+    public function showAll(){
+        $services = $this->serviceTypeRepository->showService();
+
+        return $services;
+    }
+
+    public function delete($id){
+        $this->serviceTypeRepository->deleteService($id);
     }
 
 }
