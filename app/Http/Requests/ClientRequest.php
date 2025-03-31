@@ -25,10 +25,10 @@ class ClientRequest extends FormRequest
         return [
             'name' => 'required',
             'phoneNumber' => 'required',
-            'adress.cep' => 'required|string|size:9', // Exemplo de CEP com formato "12345-678"
-            'adress.city' => 'required|string|max:255',
-            'adress.district' => 'required|string|max:255',
-            'adress.number' => 'required|integer',
+            'address.cep' => 'required|string|size:9',
+            'address.city' => 'required|string|max:255',
+            'address.district' => 'required|string|max:255',
+            'address.number' => 'required|integer',
         ];
     }
 

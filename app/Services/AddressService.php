@@ -8,14 +8,14 @@ use App\Repositories\AddressRepository;
 
 Class AddressService{
 
-    protected $adressRepository;
+    protected $addressRepository;
 
-    public function __construct(AddressRepository $adress){
-        $this->adressRepository = $adress;
+    public function __construct(AddressRepository $address){
+        $this->addressRepository = $address;
     }
 
-    public function createdAdress($data){
-        return $this->adressRepository->createAdress($data);
+    public function createdAddress($data){
+        return $this->addressRepository->createAddress($data);
     }
 }
 

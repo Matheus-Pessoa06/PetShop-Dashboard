@@ -12,7 +12,7 @@ class Client extends Model
         'photo',
         'phoneNumber',
         'pets',
-        'adress',
+        'address',
         'user_id'
     ];
 
@@ -20,7 +20,7 @@ class Client extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function adress(){
+    public function address(){
         return $this->hasMany(Address::class, 'client_id');
     }
 

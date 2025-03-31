@@ -8,16 +8,16 @@ use App\Models\Address;
 Class AddressRepository{
 
 
-    protected $adressModel;
+    protected $addressModel;
 
 
-    public function __construct(Address $adresses){
-        $this->adressModel = $adresses;
+    public function __construct(Address $addresses){
+        $this->addressModel = $addresses;
     }
 
-    public function createAdress($data){
+    public function createAddress($data){
         
-        return $this->adressModel->create([
+        return $this->addressModel->create([
             "cep" => $data['cep'],
             "city" => $data['city'],
             "district" => $data['district'],

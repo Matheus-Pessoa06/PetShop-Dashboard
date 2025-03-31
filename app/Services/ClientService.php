@@ -4,19 +4,21 @@ namespace App\Services;
 use App\Repositories\ClientRepository;
 use App\Services\AddressService;
 use App\Services\PetService;
-
+use App\Services\ConsultAndService;
 
 Class ClientService{
 
     protected $clientRepository;
     protected $addressService;
+    protected $consultAndService;
     
     protected $petService;
 
-    public function __construct(ClientRepository $client, AddressService $adress, PetService $pet){
+    public function __construct(ClientRepository $client, AddressService $address, PetService $pet, ConsultAndService $service){
         $this->clientRepository = $client;
-        $this->addressService = $adress;
+        $this->addressService = $address;
         $this->petService = $pet;
+        $this->consultAndService = $service;
     }
    
     public function createdUser($data){
@@ -33,7 +35,7 @@ Class ClientService{
         $client = $this->clientRepository->createClient($clientData);
             
         if(isset($data['address'])){
-            $adressData = [
+            $addressData = [
                 'cep' => $data['address']['cep'],
                 'city' => $data['address']['city'],
                 'district' => $data['address']['district'],
@@ -41,17 +43,23 @@ Class ClientService{
                 'client_id' => $client->id
             ];
 
-            $this->addressService->createdAdress($adressData);
+            $this->addressService->createdAddress($addressData);
         }
 
-        $petData = [
+        if(isset($data['pet'])){
+            $petData = [
             'type' => $data['pet']['type'],
             'name' => $data['pet']['name'],
             'photo' => $data['pet']['photo'],
             'description' => $data['pet']['description'],
             'client_id' => $client->id
         ];
-            $this->petService->createdPet($petData);
+           $pet = $this->petService->createdPet($petData);
+        }
+
+        if (isset($data['serviceType'])) {
+            $this->consultAndService->createConsult(array_merge($data['service'], ['pet_id' => $pet->id]));
+        }
 
         return $client;
     
@@ -63,8 +71,8 @@ Class ClientService{
 
     public function updatedClient($id, $data){
 
-        $adress = $data['adress'];
-        return $this->clientRepository->updateClient($id, $data, $adress);
+        $address = $data['address'];
+        return $this->clientRepository->updateClient($id, $data, $address);
     }
 
     public function getOne($id){
