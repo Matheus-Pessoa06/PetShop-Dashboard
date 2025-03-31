@@ -17,7 +17,7 @@ class ClientController extends Controller
 
         $client = $this->clientService->createdUser($request->all());
 
-        return response()->json($client->load('adress', 'pet'), 201);
+        return response()->json($client->load('address', 'pet'), 201);
     }
 
     public function show(){
@@ -32,7 +32,7 @@ class ClientController extends Controller
         
         $client = $this->clientService->updatedClient($request->id, $request->all());
 
-        return response()->json($client->load('adress'), 201);
+        return response()->json($client->load('address'), 201);
 
     }
 

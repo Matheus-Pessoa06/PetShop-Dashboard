@@ -18,14 +18,14 @@ Class ClientRepository{
     }
 
     public function showClients(){
-        return $this->clientModel->with('adress')->get();
+        return $this->clientModel->with('address')->get();
     }
 
-    public function updateClient($id, $data, $adress){
+    public function updateClient($id, $data, $address){
         
         $client = $this->clientModel->findOrFail($id);
 
-        return $client->update($data,  $adress);
+        return $client->update($data,  $address);
 
     }
 
