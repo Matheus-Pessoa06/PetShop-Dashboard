@@ -24,6 +24,7 @@
     padding: 0;
 }
 
+
 .container{
     display: flex;
     align-items: center;
